@@ -3,15 +3,16 @@ install.php
 controller/
 	cartController.php
 		addToCart()
+		removeCart()
 		showCart()
 	userController.php
 		listUsers()				-> manageUsers.php
 		editUser()				-> editUser.php
+		addUser()				-> create.php
 		login()					-> login.php
-		addUser()
-		logout()
+		logout()				-> logout.php
 	articleController.php
-		showArticle()
+		showArticle()			-> article.php?id=x
 		listArticles()
 		addArticle()
 		removeArticle()			-> manageArticles.php
