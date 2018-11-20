@@ -1,0 +1,43 @@
+index.php
+install.php
+controller/
+	cartController.php
+		addToCart()
+		showCart()
+	userController.php
+		listUsers()				-> manageUsers.php
+		editUser()				-> editUser.php
+		login()					-> login.php
+		addUser()
+		logout()
+	articleController.php
+		showArticle()
+		listArticles()
+		addArticle()
+		removeArticle()			-> manageArticles.php
+	categoryController.php
+		addCategory()			-> manageCategories.php
+		removeCategory()		-> manageCategories.php
+		listCategories()		-> manageCategories.php
+	orderController.php
+		addOrder()
+		removeOrder()
+	adminController.php
+		promote()
+		demote()
+model/
+view/
+	user/
+		login.php
+		logout.php
+		createUser.php
+		editUser.php
+	articles/
+		listArticles.php
+		showArticle.php
+	cart/
+		showCart.php
+	admin/
+		manageUsers.php
+		manageCategories.php
+		manageArticles.php
