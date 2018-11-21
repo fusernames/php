@@ -1,35 +1,43 @@
+
 index.php
 install.php
 controller/
+	indexController.php
+		showIndex()				-> index.php
 	cartController.php
 		addCart()
 		addToCart()
 		removeCart()
-		showCart(id)				-> cart.php
+		showCart()				-> cart.php
 	userController.php
-		listUsers()				-> manage_users.php
 		removeUser()
 		editUser()				-> edit_user.php
 		addUser()				-> create.php
 		login()					-> login.php
 		logout()				-> logout.php
 	articleController.php
-		listArticles()
 		showArticle()			-> article.php?id=x
+		listArticles()			-> articles.php
 		addArticle()
-		removeArticle()			-> manageArticles.php
+		removeArticle()
 	categoryController.php
-		addCategory()			-> manageCategories.php
-		removeCategory()		-> manageCategories.php
-		listCategories()		-> manageCategories.php
+		addCategory()
+		editCategory()
+		removeCategory()
 	orderController.php
 		addOrder()				-> orders.php
 		removeOrder()			-> orders.php
 	adminController.php
+		showAdmin()				-> admin.php
+		manageArticles()		-> manage_articles.php
+		manageUsers()			-> manage_users.php
+		manageCategories()		-> manage_categories.php
 		promote()
 		demote()
 model/
 view/
+	index/
+		index.php
 	user/
 		login.php
 		logout.php
