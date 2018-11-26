@@ -4,10 +4,10 @@ define('CONTROLLER', __DIR__.'/controller/');
 define('MODEL', __DIR__.'/model/');
 define('VIEW', __DIR__.'/view/');
 define('DB_USERS', __DIR__.'/private/users');
+define('BASE', VIEW.'base.php');
 session_start();
 require_once MODEL.'database.php';
-if (isset($_SESSION['id']))
-	$USER = getDataById(DB_USERS, $_SESSION['id']);
+require_once MODEL.'globals.php';
 require_once CONTROLLER.'userController.php';
 
 if (isset($_GET['action'])) {

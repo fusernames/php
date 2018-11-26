@@ -8,11 +8,7 @@ function getDatas($db) {
 
 function getDataById($db, $id) {
 	$datas = getDatas($db);
-	if (isset($datas[$id])) {
-		return ($datas[$id]);
-	} else {
-		return (NULL);
-	}
+	return ($datas[$id]);
 }
 
 function countData($db, $plus = TRUE) {
