@@ -1,5 +1,4 @@
 <?php $title = 'Log In' ?>
-
 <?php ob_start() ?>
 <h2>Login</h2>
 <form method="POST">

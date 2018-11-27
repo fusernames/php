@@ -49,5 +49,6 @@ function editUserAction($id) {
 		exit('error');
 	if (isset($_POST['username']) && isset($_POST['passwd']))
 		editUser($id);
-	require VIEW.'user/edit_user.php';
+	$user = getDataById(DB_USERS, $id);
+	require VIEW.'user/edit.php';
 }

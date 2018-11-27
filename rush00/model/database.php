@@ -11,6 +11,15 @@ function getDataById($db, $id) {
 	return ($datas[$id]);
 }
 
+function getDataBy($db, $key, $value) {
+	$datas = getDatas($db);
+	foreach($datas as $data) {
+		if ($data[$key] == $value)
+			return ($data);
+	}
+	return (NULL);
+}
+
 function countData($db, $plus = TRUE) {
 	if (!file_exists($db.'_count')) {
 		$count = 0;
