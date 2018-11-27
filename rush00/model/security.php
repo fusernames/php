@@ -39,4 +39,5 @@ function userSecurity($action, $id) {
 function productSecurity($action, $id) {
 	if ($CUR_USER['role'] == 'admin') {
 		return TRUE;
+	}
 }

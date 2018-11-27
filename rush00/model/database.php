@@ -1,6 +1,8 @@
 <?php
 
 function getDatas($db) {
+	if (!file_exists($db))
+		return (NULL);
 	$db = file_get_contents($db);
 	$datas = unserialize($db);
 	return ($datas);
