@@ -6,7 +6,7 @@
 	Username<br>
 	<input type="text" name="username" value="<?= $GLOBALS['CUR_USER']['username'] ?>"><br>
 	New password<br>
-	<input type="text" name="passwd"><br>
+	<input type="text" name="newpasswd"><br>
 	<?php if (userSecurity('user_edit_role', $id)) :?>
 	<select name="group">
 		<option value="user">USER</option>

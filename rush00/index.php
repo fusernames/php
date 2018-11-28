@@ -12,13 +12,13 @@ session_start();
 require_once MODEL.'database.php';
 require_once CONFIG.'globals.php';
 require_once CONFIG.'routers.php';
+require_once MODEL.'security.php';
 require_once CONTROLLER.'indexController.php';
 require_once CONTROLLER.'userController.php';
 require_once CONTROLLER.'productController.php';
 require_once CONTROLLER.'categoryController.php';
 
 function router() {
-	global $CUR_USER;
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'index')
 			indexAction();

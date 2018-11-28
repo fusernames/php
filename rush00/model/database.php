@@ -14,13 +14,12 @@ function getDataById($db, $id) {
 }
 
 function getDataBy($db, $key, $value) {
-	if (!($datas = getDatas($db)));
-		return (NULL);
+	$datas = getDatas($db);
 	foreach($datas as $data) {
 		if ($data[$key] == $value)
 			return ($data);
 	}
-	return (NULL);
+	return (array());
 }
 
 function countData($db, $plus = TRUE) {

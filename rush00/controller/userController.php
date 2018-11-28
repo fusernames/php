@@ -47,7 +47,7 @@ function editUserAction($id) {
 	userOnly();
 	if (!userSecurity('user_edit', $id))
 		exit('error');
-	if (isset($_POST['username']) && isset($_POST['passwd']))
+	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editUser($id);
 	$user = getDataById(DB_USERS, $id);
 	require VIEW.'user/edit.php';
