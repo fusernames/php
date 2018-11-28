@@ -2,7 +2,7 @@
 
 function getDatas($db) {
 	if (!file_exists($db))
-		return (NULL);
+		return (array());
 	$db = file_get_contents($db);
 	$datas = unserialize($db);
 	return ($datas);
@@ -14,7 +14,8 @@ function getDataById($db, $id) {
 }
 
 function getDataBy($db, $key, $value) {
-	$datas = getDatas($db);
+	if (!($datas = getDatas($db)));
+		return (NULL);
 	foreach($datas as $data) {
 		if ($data[$key] == $value)
 			return ($data);

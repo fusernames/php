@@ -1,6 +1,7 @@
-<?php $title = 'Editer '.htmlspecialchars($user['username']) ?>
-<?php ob_start() ?>
+<?php $title = 'Editer '.htmlspecialchars($user['username']); ?>
+<?php ob_start(); ?>
 
+<h2>Editer <?= htmlspecialchars($user['username']) ?></h2>
 <form method="POST">
 	Username<br>
 	<input type="text" name="username" value="<?= $GLOBALS['CUR_USER']['username'] ?>"><br>
@@ -12,8 +13,8 @@
 		<option value="admin">ADMIN</option>
 	</select>
 	<?php endif ?>
-	<input type="submit" value="Edit user">
+	<input type="submit" value="Editer">
 </form>
 
-<?php $content = ob_get_clean() ?>
-<?php require BASE ?>
+<?php $content = ob_get_clean(); ?>
+<?php require BASE; ?>

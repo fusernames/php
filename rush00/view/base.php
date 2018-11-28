@@ -11,6 +11,9 @@
 	<a href="index.php?action=login">Connexion</a>
 	<a href="index.php?action=register">Inscription</a>
 	<?php endif; ?>
+	<?php if ($GLOBALS['CUR_USER']['role'] == 'admin') : ?>
+	<a href="">Administration</a>
+	<?php endif ?>
 </header>
 <body>
 	<?= $content; ?>
