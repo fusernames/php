@@ -20,7 +20,7 @@ function register($username, $passwd, $role = 'user') {
 	$new['username'] = $username;
 	$new['passwd'] = hash('whirlpool', $passwd);
 	$new['role'] = $role;
-	if (checkUser($new))
+	if (!checkUser($new))
 		exit ('error');
 	addData(DB_USERS, $new);
 }
@@ -31,7 +31,7 @@ function editUser($id) {
 	$edited['username'] = $_POST['username'];
 	if (isset($_POST['newpasswd']) && $_POST['newpasswd'])
 		$edited['passwd'] = hash('whirlpool', $_POST['newpasswd']);
-	if (userSecurity('edit_user_role', $id))
+	if (userSecurity('user_edit_role', $id))
 		$edited['role'] = $_POST['role'];
 	if ($edited['username'] != $oldusername) {
 		if (!checkUser($edited))
