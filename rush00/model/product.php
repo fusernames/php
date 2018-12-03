@@ -37,12 +37,11 @@ function addProduct() {
 	addData(DB_PRODUCTS, $product);
 }
 
-function editProduct($id) {
+function editProduct($product) {
 	if (!checkProduct($_POST))
 		exit('error');
-	$product = getDataById(DB_PRODUCTS, $id);
 	hydrateProduct($product);
-	editData(DB_PRODUCTS, $id, $product);
+	editData(DB_PRODUCTS, $product);
 }
 
 ?>

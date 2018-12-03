@@ -1,6 +1,6 @@
 <?php
 
 function indexAction() {
-	require VIEW.'index/index.php';
 	$products = getDatas(DB_PRODUCTS);
+	require VIEW.'index/index.php';
 }

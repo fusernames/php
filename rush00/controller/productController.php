@@ -18,15 +18,20 @@ function addProductAction() {
 
 function editProductAction($id) {
 	adminOnly();
+	$product = getDataById(DB_PRODUCTS, $id);
+	if (!$product)
+		exit ('error');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editProduct($id);
-	$product = getDataById(DB_PRODUCTS, $id);
 	$categories = getDatas(DB_CATEGORIES);
 	require VIEW.'product/edit.php';
 }
 
 function removeProductAction($id) {
 	adminOnly();
+	$product = getDataById(DB_PRODUCTS, $id);
+	if (!$product)
+		exit ('error');
 	removeDataById(DB_PRODUCTS, $id);
 	if ($_SERVER['HTTP_REFERER']) {
 		header('Location: '.$_SERVER['HTTP_REFERER']);
