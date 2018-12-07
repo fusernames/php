@@ -1,40 +1,40 @@
 <?php
 
-function productRouter() {
+function productRoutes() {
 	global $CUR_USER;
 	switch ($_GET['action']) {
-		case 'product_add':
+		case 'add_product':
 			addProductAction();
 			break;
-		case 'product_edit':
+		case 'edit_product':
 			if (isset($_GET['id']))
 				editProductAction($_GET['id']);
 			break;
-		case 'product_remove':
+		case 'remove_product':
 			if (isset($_GET['id']))
 				removeProductAction($_GET['id']);
 			break;
 	}
 }
 
-function categoryRouter() {
+function categoryRoutes() {
 	global $CUR_USER;
 	switch ($_GET['action']) {
-		case 'category_add':
+		case 'add_category':
 			addCategoryAction();
 			break;
-		case 'category_edit':
+		case 'edit_category':
 			if (isset($_GET['id']))
 				editCategoryAction($id);
 			break;
-		case 'category_remove':
+		case 'remove_category':
 			if (isset($_GET['id']))
 				removeCategoryAction($id);
 			break;
 	}
 }
 
-function userRouter() {
+function userRoutes() {
 	global $CUR_USER;
 	switch ($_GET['action']) {
 		case 'login':
@@ -46,7 +46,7 @@ function userRouter() {
 		case 'logout':
 			logoutAction();
 			break;
-		case 'user_edit':
+		case 'edit_user':
 			if (isset($_GET['id'])) {
 				$id = $_GET['id'];
 			} else {
@@ -54,7 +54,7 @@ function userRouter() {
 			}
 			editUserAction($id);
 			break;
-		case 'user_remove':
+		case 'remove_user':
 			if (isset($_GET['id'])) {
 				removeUserAction($_GET['id']);
 			} else {

@@ -11,7 +11,7 @@ define('BASE', VIEW.'base.php');
 session_start();
 require_once MODEL.'database.php';
 require_once CONFIG.'globals.php';
-require_once CONFIG.'routers.php';
+require_once CONFIG.'routes.php';
 require_once MODEL.'security.php';
 require_once CONTROLLER.'indexController.php';
 require_once CONTROLLER.'userController.php';
@@ -22,9 +22,9 @@ function router() {
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'index')
 			indexAction();
-		userRouter();
-		productRouter();
-		categoryRouter();
+		userRoutes();
+		productRoutes();
+		categoryRoutes();
 	} else {
 		indexAction();
 	}

@@ -1,7 +1,7 @@
 <?php $title = 'New product' ?>
 <?php ob_start() ?>
 
-<h2>New product</h2>
+<h3>Nouveau produit</h3>
 <form method="POST">
 	Name<br>
 	<input type="text" name="name"><br>
@@ -13,13 +13,13 @@
 	<input type="text" name="img"><br>
 	Category<br>
 	<select name="category_1">
-		<option>Choisissez</option>
+		<option value="">Aucun</option>
 		<?php foreach ($categories as $category) { ?>
 		<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
 		<?php } ?>
 	</select>
 	<select name="category_2">
-		<option>Choisissez</option>
+		<option value="">Aucun</option>
 		<?php foreach ($categories as $category) { ?>
 		<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
 		<?php } ?>

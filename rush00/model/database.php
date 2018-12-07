@@ -2,7 +2,7 @@
 
 function getDatas($db) {
 	if (!file_exists($db))
-		return (array());
+		return (NULL);
 	$db = file_get_contents($db);
 	$datas = unserialize($db);
 	return ($datas);
@@ -10,7 +10,9 @@ function getDatas($db) {
 
 function getDataById($db, $id) {
 	$datas = getDatas($db);
-	return ($datas[$id]);
+	if (isset($datas[$id]))
+		return ($datas[$id]);
+	return (NULL);
 }
 
 function getDataBy($db, $key, $value) {
@@ -19,7 +21,7 @@ function getDataBy($db, $key, $value) {
 		if ($data[$key] == $value)
 			return ($data);
 	}
-	return (array());
+	return (NULL);
 }
 
 function countData($db, $plus = TRUE) {

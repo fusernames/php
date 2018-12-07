@@ -11,6 +11,9 @@ function addCategoryAction() {
 
 function editCategoryAction($id) {
 	adminOnly();
+	$category = getDataById(DB_CATEGORIES, $id);
+	if (!$category)
+		notFound();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editCategory($id);
 	require VIEW.'category/edit.php';
@@ -18,6 +21,9 @@ function editCategoryAction($id) {
 
 function removeCategoryAction($id) {
 	adminOnly();
+	$category = getDataById(DB_CATEGORIES, $id);
+	if (!$category)
+		notFound();
 	removeDataById(DB_CATEGORIES, $id);
 	if ($_SERVER['HTTP_REFERER']) {
 		header('Location: '.$_SERVER['HTTP_REFERER']);

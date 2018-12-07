@@ -1,6 +1,6 @@
 <?php $title = 'Log In' ?>
 <?php ob_start() ?>
-<h2>Login</h2>
+<h3>Login</h3>
 <form method="POST">
 	Username<br>
 	<input type="text" name="username"><br>

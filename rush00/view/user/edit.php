@@ -1,13 +1,13 @@
 <?php $title = 'Editer '.htmlspecialchars($user['username']); ?>
 <?php ob_start(); ?>
 
-<h2>Editer <?= htmlspecialchars($user['username']) ?></h2>
+<h3>Editer <?= htmlspecialchars($user['username']) ?></h3>
 <form method="POST">
 	Nom d'utilisateur<br>
 	<input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>"><br>
 	Nouveau mot de passe<br>
 	<input type="text" name="newpasswd"><br>
-	<?php if (userSecurity('user_edit_role', $id)) :?>
+	<?php if (userSecurity('edit_role', $user)) :?>
 	Role<br>
 	<select name="role">
 		<option value="admin">ADMIN</option>

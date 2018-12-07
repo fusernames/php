@@ -25,22 +25,21 @@ function register($username, $passwd, $role = 'user') {
 	addData(DB_USERS, $new);
 }
 
-function editUser($id) {
-	$edited = getDataById(DB_USERS, $id);
-	$oldusername = $edited['username'];
-	$edited['username'] = $_POST['username'];
+function editUser($user) {
+	$oldusername = $user['username'];
+	$user['username'] = $_POST['username'];
 	if (isset($_POST['newpasswd']) && $_POST['newpasswd'])
-		$edited['passwd'] = hash('whirlpool', $_POST['newpasswd']);
-	if (userSecurity('user_edit_role', $id))
-		$edited['role'] = $_POST['role'];
-	if ($edited['username'] != $oldusername) {
-		if (!checkUser($edited))
+		$user['passwd'] = hash('whirlpool', $_POST['newpasswd']);
+	if (userSecurity('edit_role', $user))
+		$user['role'] = $_POST['role'];
+	if ($user['username'] != $oldusername) {
+		if (!checkUser($user))
 			exit ('error');
 	} else {
-		if (!checkUser($edited, FALSE))
+		if (!checkUser($user, FALSE))
 			exit ('errorr');
 	}
-	editData(DB_USERS, $edited);
+	editData(DB_USERS, $user);
 }
 
 function login($username, $passwd) {
