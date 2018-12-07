@@ -1,4 +1,4 @@
-<?php $title = 'New product' ?>
+<?php $title = 'Nouveau produit' ?>
 <?php ob_start() ?>
 
 <h3>Nouveau produit</h3>

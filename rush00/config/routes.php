@@ -14,6 +14,9 @@ function productRoutes() {
 			if (isset($_GET['id']))
 				removeProductAction($_GET['id']);
 			break;
+		case 'list_products':
+			listProductsAction();
+			break;
 	}
 }
 
@@ -31,6 +34,11 @@ function categoryRoutes() {
 			if (isset($_GET['id']))
 				removeCategoryAction($id);
 			break;
+	}
+}
+
+function adminRoutes() {
+	switch ($_GET['action']) {
 	}
 }
 

@@ -24,7 +24,7 @@ function getDataBy($db, $key, $value) {
 	return (NULL);
 }
 
-function countData($db, $plus = TRUE) {
+function countData($db, $plus = true) {
 	if (!file_exists($db.'_count')) {
 		$count = 0;
 	} else {
@@ -56,4 +56,24 @@ function editData($db, $edited) {
 	$datas = getDatas($db);
 	$datas[$edited['id']] = $edited;
 	file_put_contents($db, serialize($datas));
+}
+
+function peelDatasContains(&$datas, $key, $contains) {
+	foreach ($datas as $data) {
+		if (stripos($data[$key], $contains) === false)
+			unset($datas[$data['id']]);
+	}
+}
+
+function peelDatasEqual(&$datas, $key, $value, $key2 = NULL) {
+	foreach ($datas as $data) {
+		if (!$key2) {
+			if ($data[$key] != $value)
+				unset($datas[$data['id']]);
+		} else {
+			if ($data[$key] != $value && $data[$key2] != $value)
+				unset($datas[$data['id']]);
+		}
+	}
+	return ($datas);
 }

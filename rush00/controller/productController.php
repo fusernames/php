@@ -38,3 +38,15 @@ function removeProductAction($id) {
 		header('Location: index.php?action=index');
 	}
 }
+
+function listProductsAction() {
+	$products = getDatas(DB_PRODUCTS);
+	$categories = getDatas(DB_CATEGORIES);
+	if (isset($_GET['category']) && getDataById(DB_CATEGORIES, $_GET['category'])) {
+		peelDatasEqual($products, 'category_1', $_GET['category'], 'category_2');
+	}
+	if (isset($_GET['name']) && $_GET['name']) {
+		peelDatasContains($products, 'name', $_GET['name']);
+	}
+	require VIEW.'product/list.php';
+}

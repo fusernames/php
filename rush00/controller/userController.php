@@ -27,7 +27,7 @@ function editUserAction($id) {
 	if (!$user || !userSecurity('edit', $user))
 		header('Location: index.php?action=user_edit');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
-		editUser(&$user);
+		editUser($user);
 	require VIEW.'user/edit.php';
 }
 
@@ -43,10 +43,6 @@ function removeUserAction($id) {
 function logoutAction() {
 	if (isset($_SESSION['id'])) {
 		unset($_SESSION['id']);
-		if ($_SERVER['HTTP_REFERER']) {
-			header('Location: '.$_SERVER['HTTP_REFERER']);
-		} else {
-			header('Location: index.php?action=index');
-		}
+		header('Location: index.php?action=index');
 	}
 }
