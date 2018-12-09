@@ -46,3 +46,14 @@ function productSecurity($action, $product = NULL) {
 		return TRUE;
 	}
 }
+
+function orderSecurity($action, $order) {
+	global $CUR_USER;
+	if ($CUR_USER['role'] == 'admin')
+		return TRUE;
+	if ($action == 'show' && $order['id_user'] == $CUR_USER['id'])
+		return TRUE;
+	if ($action == 'list' && $order['id_user'] && $order['id_user'] == $CUR_USER['id'])
+		return TRUE;
+	return FALSE;
+}

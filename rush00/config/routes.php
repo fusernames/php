@@ -1,18 +1,69 @@
 <?php
 
-function productRoutes() {
-	global $CUR_USER;
+require_once CONTROLLER.'userController.php';
+require_once CONTROLLER.'productController.php';
+require_once CONTROLLER.'categoryController.php';
+require_once CONTROLLER.'cartController.php';
+require_once CONTROLLER.'orderController.php';
+
+function getId() {
+	if (isset($_GET['id']))
+		$id = $_GET['id'];
+	else
+		$id = 0;
+	return ($id);
+}
+
+function orderRoutes() {
 	switch ($_GET['action']) {
+		case 'show_order':
+			showOrderAction(getId());
+			break;
+		case 'list_orders':
+			if (isset($_GET['id']))
+				listOrderAction($_GET['id']);
+			else
+				listOrderAction();
+			break;
+		case 'add_order':
+			addOrderAction();
+			break;
+		case 'remove_order':
+			removeOrderAction(getId());
+			break;
+	}
+}
+
+function cartRoutes() {
+	switch ($_GET['action']) {
+		case 'show_cart':
+			showCartAction();
+			break;
+		case 'add_to_cart':
+			addToCartAction($_GET['id_product']);
+			break;
+		case 'remove_from_cart':
+			removeFromCartAction($_GET['id_product']);
+			break;
+		case 'empty_cart':
+			emptyCartAction($_GET['id_product']);
+			break;
+	}
+}
+
+function productRoutes() {
+	switch ($_GET['action']) {
+		case 'show_product':
+			showProductAction(getId());
+			break;
 		case 'add_product':
 			addProductAction();
 			break;
 		case 'edit_product':
-			if (isset($_GET['id']))
-				editProductAction($_GET['id']);
+			editProductAction(getId());
 			break;
 		case 'remove_product':
-			if (isset($_GET['id']))
-				removeProductAction($_GET['id']);
+			removeProductAction(getId());
 			break;
 		case 'list_products':
 			listProductsAction();
@@ -21,18 +72,15 @@ function productRoutes() {
 }
 
 function categoryRoutes() {
-	global $CUR_USER;
 	switch ($_GET['action']) {
 		case 'add_category':
 			addCategoryAction();
 			break;
 		case 'edit_category':
-			if (isset($_GET['id']))
-				editCategoryAction($id);
+			editCategoryAction(getId());
 			break;
 		case 'remove_category':
-			if (isset($_GET['id']))
-				removeCategoryAction($id);
+			removeCategoryAction(geyId());
 			break;
 	}
 }
@@ -63,11 +111,7 @@ function userRoutes() {
 			editUserAction($id);
 			break;
 		case 'remove_user':
-			if (isset($_GET['id'])) {
-				removeUserAction($_GET['id']);
-			} else {
-				exit('error');
-			}
+			removeUserAction(getId());
 			break;
 		}
 }

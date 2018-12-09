@@ -25,7 +25,7 @@ function register($username, $passwd, $role = 'user') {
 	addData(DB_USERS, $new);
 }
 
-function editUser(&$user) {
+function editUser($user) {
 	$oldusername = $user['username'];
 	$user['username'] = $_POST['username'];
 	if (isset($_POST['newpasswd']) && $_POST['newpasswd'])

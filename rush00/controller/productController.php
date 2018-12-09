@@ -2,8 +2,10 @@
 
 require_once MODEL.'product.php';
 
-function showProduct($id) {
-	$product = getDataById($id);
+function showProductAction($id = 0) {
+	$product = getDataById(DB_PRODUCTS, $id);
+	if (!$product)
+		notFound();
 	require VIEW.'product/show.php';
 }
 
@@ -21,8 +23,9 @@ function editProductAction($id) {
 	if (!$product)
 		notFound();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
-		editProduct($id);
+		editProduct($product);
 	$categories = getDatas(DB_CATEGORIES);
+	$product = getDataById(DB_PRODUCTS, $id);
 	require VIEW.'product/edit.php';
 }
 

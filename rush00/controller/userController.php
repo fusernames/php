@@ -28,6 +28,7 @@ function editUserAction($id) {
 		header('Location: index.php?action=user_edit');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editUser($user);
+	$user = getDataById(DB_USERS, $id);
 	require VIEW.'user/edit.php';
 }
 

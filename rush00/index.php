@@ -7,6 +7,7 @@ define('VIEW', __DIR__.'/view/');
 define('DB_USERS', __DIR__.'/private/users');
 define('DB_PRODUCTS', __DIR__.'/private/products');
 define('DB_CATEGORIES', __DIR__.'/private/categories');
+define('DB_ORDERS', __DIR__.'/private/orders');
 define('BASE', VIEW.'base.php');
 session_start();
 require_once MODEL.'database.php';
@@ -14,9 +15,6 @@ require_once CONFIG.'globals.php';
 require_once CONFIG.'routes.php';
 require_once MODEL.'security.php';
 require_once CONTROLLER.'indexController.php';
-require_once CONTROLLER.'userController.php';
-require_once CONTROLLER.'productController.php';
-require_once CONTROLLER.'categoryController.php';
 
 function router() {
 	if (isset($_GET['action'])) {
@@ -25,6 +23,7 @@ function router() {
 		userRoutes();
 		productRoutes();
 		categoryRoutes();
+		cartRoutes();
 	} else {
 		indexAction();
 	}

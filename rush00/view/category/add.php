@@ -1,7 +1,7 @@
 <?php $title = 'Nouvelle categorie'; ?>
 <?php ob_start(); ?>
 
-<h2>Nouvelle categorie</h2>
+<h3>Nouvelle categorie</h3>
 <form method="POST">
 	Name<br>
 	<input type="text" name="name"><br>
