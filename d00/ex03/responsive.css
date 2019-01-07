@@ -1,0 +1,53 @@
+td {
+  font-family: Arial;
+}
+.green {
+  background-color: #2ecc71;
+}
+.blue {
+  background-color: #bdc3c7;
+}
+.red {
+  background-color: #686de0;
+}
+.beige {
+  background-color: #e74c3c;
+}
+.kaki {
+  background-color: #9b59b6;
+}
+.yellow {
+  background-color: #f39c12;
+}
+.grey {
+  background-color: #f1c40f;
+}
+.pink {
+  background-color: #a29bfe;
+}
+.pink_1 {
+  background-color: #74b9ff;
+}
+.pink_2 {
+  background-color: #fd79a8;
+}
+td h2{
+  text-align: center;
+  font-size: 1vw !important
+}
+td h1{
+  text-align: center;
+  font-size: 1vw !important;
+  margin:1vw 0;
+  padding:0;
+}
+td small:first-child {
+  font-size:0.6vw;
+  display: block;
+  text-align: right;
+}
+td small:last-child {
+  font-size:0.6vw;
+  display: block;
+  text-align: left;
+}

@@ -1,0 +1,61 @@
+body {
+  background-color: #505050;
+  font-family: Arial;
+}
+header {
+  position: relative;
+  height: 135px;
+  margin: 20px 0 20px 0;
+}
+.box {
+  background-color: #909090;
+  border-radius:10px;
+  box-shadow: 10px 10px 10px;
+}
+.content{
+  position:relative;
+}
+.container{
+  margin:0 auto;
+  width:1420px;
+}
+.menu {
+  position:absolute;
+  padding: 10px 0;
+  width: 140px;
+  height: 405px;
+}
+.menu img.active{
+  border-radius:1px;
+  box-shadow: 0 0 0 5px red;
+}
+.menu .image {
+  display:block;
+  text-align:center;
+  margin-bottom:5px;
+}
+.center {
+  position: absolute;
+  left: 200px;
+  width: 1000px;
+  height: 565px;
+  padding: 10px;
+}
+.object{
+}
+.wall {
+  height:70px;
+  width:120px;
+  background-image:url(resources/brick.jpg);
+  margin-left:10px;
+}
+.green {
+  padding: 10px;
+  height: 150px;
+  width: 500px;
+  left:175px;
+  background-color:lightgreen;
+  position:absolute;
+  bottom:58px;
+  font-size:17px;
+}
