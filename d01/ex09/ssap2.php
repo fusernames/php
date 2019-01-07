@@ -5,6 +5,8 @@ if ($argc < 2)
 	return;
 unset($argv[0]);
 $str = implode(" ", $argv);
+$str = preg_replace("/[[:blank:]]+/"," ",$str);
+$str = trim($str);
 $args = explode(" ", $str);
 natcasesort($args);
 $strings = array();

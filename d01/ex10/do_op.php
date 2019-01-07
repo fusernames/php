@@ -1,22 +1,19 @@
 #!/usr/bin/php
 <?php
 
+if ($argc != 4) {
+	echo 'Incorrect Parameters'.PHP_EOL;
+	return 1;
+}
 unset($argv[0]);
 $params = array_values(array_map('trim', $argv));
-print_r($params);
-if ($argc != 4)
-	return ;
 if ($params[1] == "+")
-	echo($params[0] + $params[2]."\n");
+	echo $params[0] + $params[2].PHP_EOL;
 else if ($params[1] == "-")
-	echo($params[0] - $params[2]."\n");
+	echo $params[0] - $params[2].PHP_EOL;
 else if ($params[1] == "*")
-	echo($params[0] * $params[2]."\n");
+	echo $params[0] * $params[2].PHP_EOL;
 else if ($params[1] == "/")
-	echo($params[0] / $params[2]."\n");
+	echo $params[0] / $params[2].PHP_EOL;
 else if ($params[1] == "%")
-	echo($params[0] % $params[2]."\n");
-else
-	return ;
-
-?>
+	echo $params[0] % $params[2].PHP_EOL;

@@ -1,10 +1,10 @@
+#!/usr/bin/php
 <?php
 $i = 0;
 
-while ($i < 100)
+while ($i < 1000)
 {
-	echo("X");
+	echo 'X';
 	$i++;
 }
-echo("\n");
-?>
+echo PHP_EOL;

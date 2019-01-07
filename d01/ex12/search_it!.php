@@ -1,5 +1,6 @@
-#!/bin/usr/php
+#!/usr/bin/php
 <?php
+
 if ($argc < 3)
 	return;
 $key = $argv[1];
@@ -11,6 +12,4 @@ foreach($argv as $arg)
 	$array[$ret[0]] = $ret[1];
 }
 if (array_key_exists($key, $array))
-	echo ($array[$key]."\n");
-print_r($array);
-?>
+	echo ($array[$key].PHP_EOL);

@@ -1,12 +1,10 @@
-#!/bin/usr/php
+#!/usr/bin/php
 <?php
-function	ft_split($str)
+
+function ft_split($str)
 {
-	$str = preg_replace("/[[:blank:]]+/"," ",$str);
+	$str = trim(preg_replace("/[[:blank:]]+/"," ",$str));
 	$array = explode(" ", $str);
 	sort($array);
 	return ($array);
 }
-
-print_r(ft_split("Hello    World AAA"));
-?>

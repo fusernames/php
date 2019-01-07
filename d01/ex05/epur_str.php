@@ -1,7 +1,10 @@
-#!/bin/usr/php
+#!/usr/bin/php
 <?php
-$str = $argv[1];
-$str = preg_replace("/[[:blank:]]+/"," ",$str);
-$str = trim($str);
-echo($str."\n");
-?>
+
+if ($argc > 1) {
+	$str = $argv[1];
+	$str = preg_replace("/[[:space:]]+/"," ",$str);
+	$str = trim($str);
+	if ($str)
+		echo $str.PHP_EOL;
+}

@@ -1,18 +1,12 @@
-#!/bin/usr/php
+#!/usr/bin/php
 <?php
+
 function ft_is_sort($tab)
 {
 	$sorted = $tab;
 	sort($sorted);
 	if ($sorted === $tab)
-		return (1);
+		return TRUE;
 	else
-		return (0);
+		return FALSE;
 }
-
-$tab = array("!", "42", "Hello World", "salut");
-if (ft_is_sort($tab))
-	echo("ca marche");
-else
-	echo("c pas trie");
-?>
