@@ -1,11 +1,25 @@
 #!/usr/bin/php
 <?php
 
+function isalpha($c) {
+	$c = ord($c);
+	return (($c >= 65 && $c <= 90) || ($c >= 97 && $c <= 122));
+}
+
+function strisalpha($str) {
+	for ($i = 0; $str[$i]; $i++) {
+		if (!isalpha($str[$i]))
+			return 0;
+	}
+	return 1;
+}
+
 if ($argc < 2)
 	return;
 unset($argv[0]);
 $str = implode(" ", $argv);
-$str = preg_replace("/[[:blank:]]+/"," ",$str);
+while(strstr($str, "  "))
+	$str = str_replace("  "," ", $str);
 $str = trim($str);
 $args = explode(" ", $str);
 natcasesort($args);
@@ -14,7 +28,7 @@ $numerics = array();
 $others = array();
 foreach($args as $arg)
 {
-	if (ctype_alpha($arg))
+	if (strisalpha($arg))
 		array_push($strings, $arg);
 	else if (is_numeric($arg))
 		array_push($numerics, $arg);
@@ -23,9 +37,12 @@ foreach($args as $arg)
 }
 sort($numerics, SORT_STRING);
 foreach($strings as $str)
-	echo($str."\n");
+	if ($str)
+		echo($str."\n");
 foreach($numerics as $num)
-	echo($num."\n");
+	if ($str)
+ 		echo($num."\n");
 foreach($others as $other)
-	echo($other."\n");
+	if ($str)
+		echo($other."\n");
 ?>

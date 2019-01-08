@@ -3,7 +3,9 @@
 
 function ft_split($str)
 {
-	$str = trim(preg_replace("/[[:blank:]]+/"," ",$str));
+	while(strstr($str, "  "))
+		$str = str_replace("  "," ", $str);
+	$str = trim($str);
 	$array = explode(" ", $str);
 	sort($array);
 	return ($array);

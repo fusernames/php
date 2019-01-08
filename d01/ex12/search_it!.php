@@ -9,7 +9,9 @@ unset($argv[1]);
 foreach($argv as $arg)
 {
 	$ret = explode(":", $arg);
-	$array[$ret[0]] = $ret[1];
+	if (isset($ret[1]) && (!empty($ret[1]) || $ret[1] == '0'))
+		$array[$ret[0]] = $ret[1];
 }
-if (array_key_exists($key, $array))
-	echo ($array[$key].PHP_EOL);
+if ($array)
+	if (array_key_exists($key, $array))
+		echo ($array[$key].PHP_EOL);

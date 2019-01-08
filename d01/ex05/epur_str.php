@@ -3,7 +3,8 @@
 
 if ($argc > 1) {
 	$str = $argv[1];
-	$str = preg_replace("/[[:space:]]+/"," ",$str);
+	while(strstr($str, "  "))
+		$str = str_replace("  "," ", $str);
 	$str = trim($str);
 	if ($str)
 		echo $str.PHP_EOL;

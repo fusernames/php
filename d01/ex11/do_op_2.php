@@ -8,7 +8,7 @@ if ($argc != 2)
 }
 trim($argv[1]);
 $params = sscanf($argv[1], "%d %c %d %s");
-if (!$params[0] || !$params[1] || !$params[2] || $params[3]) {
+if (!is_numeric($params[0]) || !$params[1] || !is_numeric($params[2]) || $params[3]) {
 	echo ('Syntax Error'.PHP_EOL);
 	return ;
 }
