@@ -12,7 +12,9 @@ if (!is_numeric($params[0]) || !$params[1] || !is_numeric($params[2]) || $params
 	echo ('Syntax Error'.PHP_EOL);
 	return ;
 }
-if ($params[1] == "+")
+if (($params[0] == 0 || $params[2] == 0) && ($params[1] == '/' || $params[2] == '%'))
+	echo '0'.PHP_EOL;
+else if ($params[1] == "+")
 	echo($params[0] + $params[2].PHP_EOL);
 else if ($params[1] == "-")
 	echo($params[0] - $params[2].PHP_EOL);
@@ -22,5 +24,6 @@ else if ($params[1] == "/")
 	echo($params[0] / $params[2].PHP_EOL);
 else if ($params[1] == "%")
 	echo($params[0] % $params[2].PHP_EOL);
-else
-	return;
+else {
+	echo 'Syntax Error'.PHP_EOL;
+}

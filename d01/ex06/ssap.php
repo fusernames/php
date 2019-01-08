@@ -7,7 +7,7 @@ if ($argc > 1) {
 	$args = explode(" ", $str);
 	sort($args);
 	foreach($args as $arg) {
-		if ($arg)
-			echo($arg.PHP_EOL);
+		if ($arg != '')
+			echo $arg.PHP_EOL;
 	}
 }

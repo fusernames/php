@@ -9,7 +9,7 @@ unset($argv[1]);
 foreach($argv as $arg)
 {
 	$ret = explode(":", $arg);
-	if (isset($ret[1]) && (!empty($ret[1]) || $ret[1] == '0'))
+	if (isset($ret[1]))
 		$array[$ret[0]] = $ret[1];
 }
 if ($array)

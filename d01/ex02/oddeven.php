@@ -3,7 +3,7 @@
 
 while (1)
 {
-	echo("entrez un nombre: ");
+	echo("Entrez un nombre: ");
 	$usr = fgets(STDIN);
 	if (!$usr) {
 		echo PHP_EOL;

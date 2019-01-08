@@ -28,21 +28,21 @@ $numerics = array();
 $others = array();
 foreach($args as $arg)
 {
-	if (strisalpha($arg))
+	if (isalpha($arg))
 		array_push($strings, $arg);
-	else if (is_numeric($arg))
+	else if (is_numeric($arg[0]))
 		array_push($numerics, $arg);
 	else
 		array_push($others, $arg);
 }
 sort($numerics, SORT_STRING);
 foreach($strings as $str)
-	if ($str)
+	if ($str != '')
 		echo($str."\n");
 foreach($numerics as $num)
-	if ($str)
+	if ($str != '')
  		echo($num."\n");
 foreach($others as $other)
-	if ($str)
+	if ($str != '')
 		echo($other."\n");
 ?>

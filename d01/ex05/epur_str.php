@@ -6,6 +6,5 @@ if ($argc > 1) {
 	while(strstr($str, "  "))
 		$str = str_replace("  "," ", $str);
 	$str = trim($str);
-	if ($str)
 		echo $str.PHP_EOL;
 }

@@ -8,5 +8,5 @@ function ft_split($str)
 	$str = trim($str);
 	$array = explode(" ", $str);
 	sort($array);
-	return ($array);
+	return $array;
 }
