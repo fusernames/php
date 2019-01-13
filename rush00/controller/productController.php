@@ -6,6 +6,10 @@ function showProductAction($id = 0) {
 	$product = getDataById(DB_PRODUCTS, $id);
 	if (!$product)
 		return notFound();
+	if ($product['category_1'])
+		$product['category_1'] = getDataById(DB_CATEGORIES, $product['category_1']);
+	if ($product['category_2'])
+		$product['category_2'] = getDataById(DB_CATEGORIES, $product['category_2']);
 	require VIEW.'product/show.php';
 }
 

@@ -6,7 +6,7 @@ function addCategoryAction()
 {
 	adminOnly();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		addCategory();
+		addCategory($_POST['name']);
 	}
 	require VIEW.'category/add.php';
 }

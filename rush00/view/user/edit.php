@@ -4,8 +4,8 @@
 <form method="POST">
 	Nom d'utilisateur<br>
 	<input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>"><br>
-	Nouveau mot de passe<br>
-	<input type="text" name="newpasswd"><br>
+	Nouveau mot de passe (facultatif)<br>
+	<input type="password" name="newpasswd"><br>
 	<?php if (userSecurity('edit_role', $user)) :?>
 	Role<br>
 	<select name="role">

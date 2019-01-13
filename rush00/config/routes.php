@@ -52,7 +52,7 @@ function cartRoutes() {
 			showCartAction();
 			break;
 		case 'add_to_cart':
-			addToCartAction(get('id_product'));
+			addToCartAction(get('id_product'), get('quantity', 1));
 			break;
 		case 'remove_from_cart':
 			removeFromCartAction(get('id_product'));

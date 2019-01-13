@@ -44,15 +44,15 @@ function removeUserAction($id)
 	if (!$user)
 		return notFound();
 	removeDataById(DB_USERS, $id);
-	if ($id == $_SESSION['id'])
-		unset($_SESSION['id']);
+	if ($_SESSION['id'] == $id)
+		session_destroy();
 	header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 
 function logoutAction()
 {
 	if (isset($_SESSION['id'])) {
-		unset($_SESSION['id']);
+		session_destroy();
 		header('Location: index.php?action=index');
 	}
 }

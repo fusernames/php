@@ -21,7 +21,7 @@ function register($username, $passwd, $role = 'user') {
 	$new['passwd'] = hash('whirlpool', $passwd);
 	$new['role'] = $role;
 	if (!checkUser($new))
-		exit ('error');
+		exit ('Utilisateur invalide');
 	addData(DB_USERS, $new);
 }
 
@@ -34,10 +34,10 @@ function editUser($user) {
 		$user['role'] = $_POST['role'];
 	if ($user['username'] != $oldusername) {
 		if (!checkUser($user))
-			exit ('error');
+			exit ('Utilisateur invalide');
 	} else {
 		if (!checkUser($user, FALSE))
-			exit ('errorr');
+			exit ('Utilisateur invalide');
 	}
 	editData(DB_USERS, $user);
 }
@@ -51,6 +51,5 @@ function login($username, $passwd) {
 			return;
 		}
 	}
-	exit('error');
+	exit('Utilisateur ou Mot de passe invalide');
 }
-

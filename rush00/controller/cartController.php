@@ -13,12 +13,15 @@ function showCartAction() {
 				$cart[$elem['id']]['total'] = $product['price'] * $elem['quantity'];
 				$total += $cart[$elem['id']]['total'];
 			}
+			$total = array_sum(array_column($cart, 'total'));
 		}
 	}
 	require VIEW.'cart/show.php';
 }
 
-function addToCartAction($id_product, $quantity = 1) {
+function addToCartAction($id_product, $quantity) {
+	if (!is_numeric($quantity) || $quantity < 1)
+		exit('error');
 	$product = getDataById(DB_PRODUCTS, $id_product);
 	if (!$product)
 		notFound();

@@ -1,11 +1,11 @@
-<?php $title = 'Register' ?>
+<?php $title = 'S\'enregistrer' ?>
 <?php ob_start() ?>
 
 <form method="POST">
-	Username<br>
+	Nom d'utilisateur<br>
 	<input type="text" name="username"><br>
-	Password<br>
-	<input type="text" name="passwd"><br>
+	Mot de passe<br>
+	<input type="password" name="passwd"><br>
 	<input type="submit">
 </form>
 

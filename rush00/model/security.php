@@ -14,6 +14,7 @@ function userOnly($action = 'login') {
 	global $CUR_USER;
 	if (!isset($CUR_USER)) {
 		header('Location: index.php?action='.$action);
+		exit();
 	}
 }
 
@@ -23,6 +24,7 @@ function adminOnly($action = 'index') {
 	if ($CUR_USER['role'] == 'admin')
 		return TRUE;
 	header('Location: index.php?action='.$action);
+	exit();
 }
 
 function userSecurity($action, $user) {

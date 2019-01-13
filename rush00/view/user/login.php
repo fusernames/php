@@ -5,7 +5,7 @@
 	Nom d'utilisateur<br>
 	<input type="text" name="username"><br>
 	Mot de passe<br>
-	<input type="text" name="passwd"><br>
+	<input type="password" name="passwd"><br>
 	<input type="submit" name="Valider">
 </form>
 

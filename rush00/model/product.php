@@ -1,5 +1,7 @@
 <?php
 
+require_once MODEL.'database.php';
+
 function checkProduct($product) {
 	if (!isset($product['name']) || !isset($product['img'])
 		|| !isset($product['price']))
@@ -20,26 +22,28 @@ function checkProduct($product) {
 	return (TRUE);
 }
 
-function hydrateProduct(&$product = NULL) {
-	$product['name'] = $_POST['name'];
-	$product['description'] = $_POST['description'];
-	$product['img'] = $_POST['img'];
-	$product['price'] = $_POST['price'];
-	$product['category_1'] = $_POST['category_1'];
-	$product['category_2'] = $_POST['category_2'];
+function hydrateProduct($tab, $product = NULL) {
+	$product['name'] = $tab['name'];
+	$product['description'] = $tab['description'];
+	$product['img'] = $tab['img'];
+	$product['price'] = $tab['price'];
+	$product['category_1'] = $tab['category_1'];
+	$product['category_2'] = $tab['category_2'];
 	return ($product);
 }
 
-function addProduct() {
-	$product = hydrateProduct();
+function addProduct($tab = NULL) {
+	if ($tab === NULL && isset($_POST))
+		$tab = $_POST;
+	$product = hydrateProduct($tab);
 	if (!checkProduct($product))
-		exit('error');
+		exit('Produit invalide');
 	addData(DB_PRODUCTS, $product);
 }
 
 function editProduct($product) {
-	hydrateProduct($product);
+	$product = hydrateProduct($_POST, $product);
 	if (!checkProduct($product))
-		exit('error');
+		exit('Produit invalide');
 	editData(DB_PRODUCTS, $product);
 }

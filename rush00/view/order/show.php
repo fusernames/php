@@ -3,7 +3,7 @@
 
 <?php if (isset($order)) : ?>
 <p>
-  <?= date('\l\e j M Y à H\hi', $order['time']) ?> par <?= $order['user']['username'] ?>
+  <?= date('\l\e j M Y à H\hi', $order['time']) ?> par <b><?= $order['user']['username'] ?></b>(<?= $order['id_user'] ?>)
 </p>
 <table>
 	<tr>
@@ -35,7 +35,7 @@
   <input type="text" name="id_product"><br>
   Quantité :<br>
   <input type="text" name="quantity"><br>
-  <input type="submit" value="Ajouter au panier"><br>
+  <input type="submit" value="Ajouter à la commande"><br>
 </form>
 <?php endif; ?>
 <?php endif; ?>

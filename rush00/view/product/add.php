@@ -4,7 +4,7 @@
 <form method="POST">
 	Name<br>
 	<input type="text" name="name"><br>
-	Description<br>
+	Description (facultatif)<br>
 	<textarea name="description"></textarea><br>
 	Price<br>
 	<input type="text" name="price"><br>

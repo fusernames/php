@@ -19,10 +19,10 @@ function addOrderAction() {
 		$order['total'] = array_sum(array_column($order['products'], 'total'));
 		unset($_SESSION['cart']);
 		if (!checkOrder($order))
-			exit('error');
+			exit('Quantité invalide');
 		addData(DB_ORDERS, $order);
 	}
-	header('Location: '.'index.php?action=list_orders&id='.$CUR_USER['id']);
+	header('Location: '.'index.php?action=list_orders&id_user='.$CUR_USER['id']);
 }
 
 function removeOrderAction($id) {
@@ -35,7 +35,8 @@ function removeOrderAction($id) {
 	header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 
-function showOrderAction($id) {
+function showOrderAction($id)
+{
 	userOnly();
 	$order = getDataById(DB_ORDERS, $id);
 	if (!$order)
@@ -46,7 +47,8 @@ function showOrderAction($id) {
 	require VIEW.'order/show.php';
 }
 
-function listOrderAction($id_user = NULL) {
+function listOrderAction($id_user = NULL)
+{
 	global $CUR_USER;
 	userOnly();
 	if ($CUR_USER['role'] != 'admin')
@@ -81,6 +83,8 @@ function addToOrder($id)
 	if (!$order)
 		return notFound();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if (!$_POST['quantity'])
+			exit('Quantité invalide');
 		$product = getDataById(DB_PRODUCTS, $_POST['id_product']);
 		if (!$product)
 			return notFound();
@@ -89,7 +93,7 @@ function addToOrder($id)
 		$order['products'][$product['id']]['total'] = $product['price'] * $_POST['quantity'];
 		$order['total'] = array_sum(array_column($order['products'], 'total'));
 		if (!checkOrder($order))
-			exit('error');
+			exit('Quantité invalide');
 		editData(DB_ORDERS, $order);
 	}
 	header('Location: '.$_SERVER['HTTP_REFERER']);

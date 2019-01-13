@@ -1,19 +1,21 @@
 <?php
 
+require_once MODEL.'database.php';
+
 function checkCategory($category, $action) {
-	if (!isset($category['name']) || !$category['name'])
+	if (!isset($category['name']) || $category['name'] == '')
 		return FALSE;
 	if (getDataBy(DB_CATEGORIES, 'name', $category['name']))
 		return FALSE;
 	return TRUE;
 }
 
-function addCategory() {
-	$category['name'] = $_POST['name'];
+function addCategory($name) {
+	$category['name'] = $name;
 	if (checkCategory($category, 'add')) {
 		addData(DB_CATEGORIES, $category);
 	} else {
-		exit ('error');
+		exit ('Categorie invalide');
 	}
 }
 
@@ -22,6 +24,6 @@ function editCategory($category) {
 	if (checkCategory($category, 'edit')) {
 		editData(DB_CATEGORIES, $category);
 	} else {
-		exit ('error');
+		exit ('Categorie invalide');
 	}
 }

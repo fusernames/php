@@ -24,12 +24,17 @@
 		<div><img src="<?= htmlspecialchars($product['img']) ?>" width="120px" height="auto"></div>
 		<a href="index.php?action=show_product&id=<?= $product['id'] ?>"><?= htmlspecialchars($product['name'])?></a><br>
 		Prix : <?= htmlspecialchars($product['price']) ?><br>
-		<a href="index.php?action=add_to_cart&id_product=<?= $product['id'] ?>"><button>Ajouter au panier</button></a>
+		<form method="get" action="index.php">
+			<input type="hidden" name="action" value="add_to_cart">
+			<input type="hidden" name="id_product" value="<?= $product['id'] ?>">
+			<input style="width:30px; text-align:center;" type="number" name="quantity" value="1" min="1"><br>
+			<button>Ajouter au panier</button>
+		</form>
 		<?php if (productSecurity('edit', $product)) : ?>
-		<br><a href="index.php?action=edit_product&id=<?= $product['id'] ?>"><button>Editer</button></a>
+		<a href="index.php?action=edit_product&id=<?= $product['id'] ?>"><button>Editer</button></a>
 		<?php endif; ?>
 		<?php if (productSecurity('remove', $product)) : ?>
-		<br><a href="index.php?action=remove_product&id=<?= $product['id'] ?>"><button>Supprimer</button></a><br>
+		<a href="index.php?action=remove_product&id=<?= $product['id'] ?>"><button>Supprimer</button></a>
 		<?php endif; ?>
 	</div>
 	<?php endforeach; ?>
