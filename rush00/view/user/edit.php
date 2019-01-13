@@ -1,7 +1,6 @@
 <?php $title = 'Editer '.htmlspecialchars($user['username']); ?>
 <?php ob_start(); ?>
 
-<h3>Editer <?= htmlspecialchars($user['username']) ?></h3>
 <form method="POST">
 	Nom d'utilisateur<br>
 	<input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>"><br>
@@ -14,8 +13,9 @@
 		<option value="user" <?php if ($user['role'] == 'user') : ?>selected<?php endif; ?>>USER</option>
 	</select><br>
 	<?php endif; ?>
-	<br> <input type="submit" value="Editer">
+	<input type="submit" value="Editer">
 </form>
+<a href="index.php?action=remove_user&id=<?= $user['id'] ?>"><button>Supprimer</button></a>
 
 <?php $content = ob_get_clean(); ?>
 <?php require BASE; ?>

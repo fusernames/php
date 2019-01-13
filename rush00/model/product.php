@@ -33,7 +33,7 @@ function hydrateProduct(&$product = NULL) {
 function addProduct() {
 	$product = hydrateProduct();
 	if (!checkProduct($product))
-		exit(print_r($product));
+		exit('error');
 	addData(DB_PRODUCTS, $product);
 }
 
@@ -43,5 +43,3 @@ function editProduct($product) {
 		exit('error');
 	editData(DB_PRODUCTS, $product);
 }
-
-?>

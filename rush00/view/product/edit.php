@@ -1,7 +1,6 @@
 <?php $title = 'Editer '.htmlspecialchars($product['name']); ?>
 <?php ob_start(); ?>
 
-<h3>Editer : <?= htmlspecialchars($product['name']) ?><h3>
 <form method="POST">
 	Name<br>
 	<input type="text" name="name" value="<?= htmlspecialchars($product['name']) ?>"><br>

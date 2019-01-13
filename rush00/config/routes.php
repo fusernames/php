@@ -5,31 +5,43 @@ require_once CONTROLLER.'productController.php';
 require_once CONTROLLER.'categoryController.php';
 require_once CONTROLLER.'cartController.php';
 require_once CONTROLLER.'orderController.php';
+require_once CONTROLLER.'adminController.php';
 
-function getId() {
-	if (isset($_GET['id']))
-		$id = $_GET['id'];
+function get($var, $default = 0) {
+	if (isset($_GET[$var]))
+		$ret = $_GET[$var];
 	else
-		$id = 0;
-	return ($id);
+		$ret = $default;
+	return $ret;
+}
+
+function adminRoutes() {
+	switch ($_GET['action']) {
+		case 'administration':
+			administrationAction();
+			break;
+	}
 }
 
 function orderRoutes() {
 	switch ($_GET['action']) {
 		case 'show_order':
-			showOrderAction(getId());
+			showOrderAction(get('id'));
 			break;
 		case 'list_orders':
-			if (isset($_GET['id']))
-				listOrderAction($_GET['id']);
-			else
-				listOrderAction();
+			listOrderAction(get('id_user', NULL));
 			break;
 		case 'add_order':
 			addOrderAction();
 			break;
+		case 'remove_from_order':
+			removeFromOrder(get('id'), get('id_product'));
+			break;
 		case 'remove_order':
-			removeOrderAction(getId());
+			removeOrderAction(get('id'));
+			break;
+		case 'add_to_order':
+			addToOrder(get('id'));
 			break;
 	}
 }
@@ -40,13 +52,19 @@ function cartRoutes() {
 			showCartAction();
 			break;
 		case 'add_to_cart':
-			addToCartAction($_GET['id_product']);
+			addToCartAction(get('id_product'));
 			break;
 		case 'remove_from_cart':
-			removeFromCartAction($_GET['id_product']);
+			removeFromCartAction(get('id_product'));
 			break;
 		case 'empty_cart':
-			emptyCartAction($_GET['id_product']);
+			emptyCartAction(get('id_product'));
+			break;
+		case 'remove_1_from_cart':
+			removeOneFromCartAction(get('id_product'));
+			break;
+		case 'add_1_to_cart':
+			addOneToCartAction(get('id_product'));
 			break;
 	}
 }
@@ -54,16 +72,16 @@ function cartRoutes() {
 function productRoutes() {
 	switch ($_GET['action']) {
 		case 'show_product':
-			showProductAction(getId());
+			showProductAction(get('id'));
 			break;
 		case 'add_product':
 			addProductAction();
 			break;
 		case 'edit_product':
-			editProductAction(getId());
+			editProductAction(get('id'));
 			break;
 		case 'remove_product':
-			removeProductAction(getId());
+			removeProductAction(get('id'));
 			break;
 		case 'list_products':
 			listProductsAction();
@@ -77,16 +95,14 @@ function categoryRoutes() {
 			addCategoryAction();
 			break;
 		case 'edit_category':
-			editCategoryAction(getId());
+			editCategoryAction(get('id'));
 			break;
 		case 'remove_category':
-			removeCategoryAction(geyId());
+			removeCategoryAction(get('id'));
 			break;
-	}
-}
-
-function adminRoutes() {
-	switch ($_GET['action']) {
+		case 'list_categories':
+			listCategoriesAction();
+			break;
 	}
 }
 
@@ -103,15 +119,13 @@ function userRoutes() {
 			logoutAction();
 			break;
 		case 'edit_user':
-			if (isset($_GET['id'])) {
-				$id = $_GET['id'];
-			} else {
-				$id = $CUR_USER['id'];
-			}
-			editUserAction($id);
+			editUserAction(get('id', $CUR_USER['id']));
 			break;
 		case 'remove_user':
-			removeUserAction(getId());
+			removeUserAction(get('id'));
+			break;
+		case 'list_users':
+			listUsersAction();
 			break;
 		}
 }

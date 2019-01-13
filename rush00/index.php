@@ -24,9 +24,12 @@ function router() {
 		productRoutes();
 		categoryRoutes();
 		cartRoutes();
+		orderRoutes();
+		adminRoutes();
 	} else {
 		indexAction();
 	}
 }
 
+date_default_timezone_set('Europe/Paris');
 router();

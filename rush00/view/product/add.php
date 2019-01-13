@@ -1,7 +1,6 @@
 <?php $title = 'Nouveau produit' ?>
 <?php ob_start() ?>
 
-<h3>Nouveau produit</h3>
 <form method="POST">
 	Name<br>
 	<input type="text" name="name"><br>

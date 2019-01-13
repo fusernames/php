@@ -1,9 +1,7 @@
 <?php
 
-function checkCategory($category) {
-	if (!isset($category['name']))
-		return FALSE;
-	if (!$category['name'])
+function checkCategory($category, $action) {
+	if (!isset($category['name']) || !$category['name'])
 		return FALSE;
 	if (getDataBy(DB_CATEGORIES, 'name', $category['name']))
 		return FALSE;
@@ -12,19 +10,17 @@ function checkCategory($category) {
 
 function addCategory() {
 	$category['name'] = $_POST['name'];
-	if (checkCategory($category)) {
+	if (checkCategory($category, 'add')) {
 		addData(DB_CATEGORIES, $category);
 	} else {
 		exit ('error');
 	}
 }
 
-function editCategory($id) {
-	if (!($category = getDataById(DB_CATEGORY, $id)))
-		exit ('error');
+function editCategory($category) {
 	$category['name'] = $_POST['name'];
-	if (checkCategory($category)) {
-		addData(DB_CATEGORIES, $category);
+	if (checkCategory($category, 'edit')) {
+		editData(DB_CATEGORIES, $category);
 	} else {
 		exit ('error');
 	}

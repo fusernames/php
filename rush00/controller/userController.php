@@ -11,8 +11,10 @@ function loginAction() {
 	require VIEW.'user/login.php';
 }
 
-function registerAction() {
-	if (isset($_SESSION['id']))
+function registerAction()
+{
+	global $CUR_USER;
+	if (isset($CUR_USER['id']) && $CUR_USER['role'] == 'user')
 		header('Location: index.php?action=index');
 	if (isset($_POST['username']) && isset($_POST['passwd'])) {
 		register($_POST['username'], $_POST['passwd']);
@@ -21,29 +23,43 @@ function registerAction() {
 	require VIEW.'user/register.php';
 }
 
-function editUserAction($id) {
+function editUserAction($id)
+{
 	userOnly();
 	$user = getDataById(DB_USERS, $id);
-	if (!$user || !userSecurity('edit', $user))
-		header('Location: index.php?action=user_edit');
+	if (!$user)
+	 	return notFound();
+	if (!userSecurity('edit', $user))
+		return unAuthorized();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editUser($user);
 	$user = getDataById(DB_USERS, $id);
 	require VIEW.'user/edit.php';
 }
 
-function removeUserAction($id) {
-	adminOnly();
+function removeUserAction($id)
+{
+	userOnly();
 	$user = getDataById(DB_USERS, $id);
 	if (!$user)
-		notFound();
+		return notFound();
 	removeDataById(DB_USERS, $id);
+	if ($id == $_SESSION['id'])
+		unset($_SESSION['id']);
 	header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 
-function logoutAction() {
+function logoutAction()
+{
 	if (isset($_SESSION['id'])) {
 		unset($_SESSION['id']);
 		header('Location: index.php?action=index');
 	}
+}
+
+function listUsersAction()
+{
+		adminOnly();
+		$users = getDatas(DB_USERS);
+		require VIEW.'user/list.php';
 }

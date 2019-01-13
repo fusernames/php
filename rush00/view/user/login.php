@@ -1,12 +1,13 @@
-<?php $title = 'Log In' ?>
+<?php $title = 'Connexion' ?>
 <?php ob_start() ?>
-<h3>Login</h3>
+
 <form method="POST">
-	Username<br>
+	Nom d'utilisateur<br>
 	<input type="text" name="username"><br>
-	Password<br>
+	Mot de passe<br>
 	<input type="text" name="passwd"><br>
-	<input type="submit">
+	<input type="submit" name="Valider">
 </form>
+
 <?php $content = ob_get_clean() ?>
 <?php require BASE ?>

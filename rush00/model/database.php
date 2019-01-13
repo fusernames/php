@@ -2,9 +2,10 @@
 
 function getDatas($db) {
 	if (!file_exists($db))
-		return (NULL);
+		return (array());
 	$db = file_get_contents($db);
 	$datas = unserialize($db);
+	krsort($datas);
 	return ($datas);
 }
 
@@ -39,7 +40,7 @@ function addData($db, $new) {
 	$datas = getDatas($db);
 	$count = countData($db);
 	$new['id'] = $count;
-	$datas[$count] = $new; 
+	$datas[$count] = $new;
 	file_put_contents($db, serialize($datas));
 }
 

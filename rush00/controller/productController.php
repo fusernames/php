@@ -5,12 +5,14 @@ require_once MODEL.'product.php';
 function showProductAction($id = 0) {
 	$product = getDataById(DB_PRODUCTS, $id);
 	if (!$product)
-		notFound();
+		return notFound();
 	require VIEW.'product/show.php';
 }
 
 function addProductAction() {
 	adminOnly();
+	if (!productSecurity('add', $product))
+		return unAuthorized();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		addProduct();
 	$categories = getDatas(DB_CATEGORIES);
@@ -21,7 +23,9 @@ function editProductAction($id) {
 	adminOnly();
 	$product = getDataById(DB_PRODUCTS, $id);
 	if (!$product)
-		notFound();
+		return notFound();
+	if (!productSecurity('edit', $product))
+		return unAuthorized();
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		editProduct($product);
 	$categories = getDatas(DB_CATEGORIES);
@@ -33,7 +37,9 @@ function removeProductAction($id) {
 	adminOnly();
 	$product = getDataById(DB_PRODUCTS, $id);
 	if (!$product)
-		notFound();
+		return notFound();
+	if (!productSecurity('delete', $product))
+		return unAuthorized();
 	removeDataById(DB_PRODUCTS, $id);
 	if ($_SERVER['HTTP_REFERER']) {
 		header('Location: '.$_SERVER['HTTP_REFERER']);
