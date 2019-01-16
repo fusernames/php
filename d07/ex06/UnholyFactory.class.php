@@ -4,7 +4,8 @@ class UnholyFactory
 {
 	private $schemas = array();
 
-	public function absorb($fighter) {
+	public function absorb($fighter)
+	{
 		if (get_parent_class($fighter) != 'Fighter') {
 			echo '(Factory can\'t absob this, it\'s not a Fighter)'.PHP_EOL;
 		} else if (!in_array($fighter, $this->schemas)) {
@@ -14,7 +15,9 @@ class UnholyFactory
 			echo '(Factory already absorbed a fighter of type '.$fighter->fighterType.')'.PHP_EOL;
 		}
 	}
-	public function fabricate($fighter) {
+
+	public function fabricate($fighter)
+	{
 		if (array_key_exists($fighter, $this->schemas)) {
 			echo '(Factory fabricates a fighter of type '.$fighter.')'.PHP_EOL;
 			return ($this->schemas[$fighter]);

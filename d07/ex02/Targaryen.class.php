@@ -2,10 +2,13 @@
 
 class Targaryen
 {
-	public function resistsFire() {
+	public function resistsFire()
+	{
 		return False;
 	}
-	public function getBurned() {
+	
+	public function getBurned()
+	{
 		if (!$this->resistsFire())
 			return ('burns alive');
 		else {
