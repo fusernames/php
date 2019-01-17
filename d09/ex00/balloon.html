@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<title>Balloon</title>
 	<style>
 		#circle {
 			background-color: red;
@@ -11,7 +13,7 @@
 </head>
 <body>
 	<div id="circle" onclick="circlePlus()" onmouseleave="circleMinus()"></div>
-	<script>
+	<script type="text/javascript">
 		function circlePlus() {
 			var circle = document.getElementById('circle');
 			var color = circle.style.backgroundColor;
@@ -34,7 +36,7 @@
 				circle.style.backgroundColor = 'green';
 			}
 		}
-		
+
 		function circleMinus() {
 			var circle = document.getElementById('circle');
 			var color = circle.style.backgroundColor;

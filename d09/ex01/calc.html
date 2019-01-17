@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<title>Calculator</title>
 </head>
 <body>
 	<form name="form">
@@ -14,13 +16,13 @@
 		<input name="nb_two" type="text">
 		<input type="submit" value="Try me!">
 	</form>
-	<script>
+	<script type="text/javascript">
 		var form = document.forms['form'];
-		
+
 		setInterval(function() {
    			 alert('Please use me...');
-		}, 30000);	
-		
+		}, 30000);
+
 		form.onsubmit = function() {
 			var res = 0;
 			var nb1 = parseInt(form['nb_one'].value);

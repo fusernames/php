@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="ft_list">
+
+    </div>
+    <button id="new">New</button>
+    <script type="text/javascript">
+      var button = document.getElementById('new');
+      var lst = document.getElementById('ft_list');
+
+      function removeChild(elem) {
+        elem.display = 'none';
+        lst.removeChild(elem);
+      }
+
+      button.onclick = function() {
+        var todo = prompt('New elem To Do :');
+        var div = document.createElement('div');
+        var id = parseInt(lst.firstChild.id);
+        div.innerHTML = todo;
+        div.onclick = function() {
+          removeChild(div);
+        };
+        if (!isNaN(id)) {
+          div.id = id + 1;
+        } else {
+          div.id = 1;
+        }
+        lst.insertBefore(div, lst.firstChild);
+        createCookie();
+      };
+
+      function createCookie() {
+        var elem = lst.firstChild;
+        var str;
+        while((elem = elem.nextSibling) != NULL)
+          str = str + ',' + elem.nextSibling;
+        document.cookie = 'todo=' + str + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+      }
+
+    </script>
+  </body>
+</html>
