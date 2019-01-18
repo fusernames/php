@@ -12,9 +12,9 @@
 	</style>
 </head>
 <body>
-	<div id="circle" onclick="circlePlus()" onmouseleave="circleMinus()"></div>
+	<div id="circle"></div>
 	<script type="text/javascript">
-		function circlePlus() {
+		document.getElementById('circle').onclick = function () {
 			var circle = document.getElementById('circle');
 			var color = circle.style.backgroundColor;
 			var width = circle.clientWidth;
@@ -37,7 +37,7 @@
 			}
 		}
 
-		function circleMinus() {
+		document.getElementById('circle').onmouseleave = function () {
 			var circle = document.getElementById('circle');
 			var color = circle.style.backgroundColor;
 			var width = circle.clientWidth;
