@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Calculator</title>
+	<meta charset="utf-8">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -21,6 +22,9 @@
 
 		$(document).ready(function() {
 
+			setInterval(function() {
+   			alert('Please use me...');
+			}, 30000);
 			var form = $('form[name="form"]');
 			form.submit(function () {
 				var nb1 = parseInt($('input[name="nb_one"]').val());
@@ -30,7 +34,7 @@
 					alert('Error :(');
 					return false;
 				}
-				if ((op == '%' || op == '/') && (nb1 == 0 || nb2 == 0)) {
+				if ((op == '%' || op == '/') && nb2 == 0) {
 					res = 'It\'s over 9000!';
 					alert(res);
 					console.log(res);

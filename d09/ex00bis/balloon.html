@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Balloon</title>
 	<style>
 		#circle {
@@ -18,12 +19,11 @@
 		$(document).ready(function() {
 			var circle = $('#circle');
 			circle.click(function() {
-				if (circle.width() == 420) {
+				circle.width(circle.width() + 10);
+				circle.height(circle.height() + 10);
+				if (circle.width() > 420) {
 					circle.width(200);
 					circle.height(200);
-				} else {
-					circle.width(circle.width() + 10);
-					circle.height(circle.height() + 10);
 				}
 				if (circle.css('background-color') == 'rgb(255, 0, 0)')
 					circle.css('background-color', 'green');
