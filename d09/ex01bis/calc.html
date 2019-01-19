@@ -36,7 +36,20 @@
 					console.log(res);
 					return false;
 				}
-				res = eval(nb1 + op + nb2);
+				if (op == '%')
+					res = nb1 % nb2;
+				else if (op == '+')
+					res = nb1 + nb2;
+				else if (op == '-')
+					res = nb1 - nb2;
+				else if (op == '/')
+					res = nb1 / nb2;
+				else if (op == '*')
+					res = nb1 * nb2;
+				else {
+					alert('Error :(');
+					return false;
+				}
 				alert(res);
 				console.log(res);
 				return false;

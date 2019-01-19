@@ -4,10 +4,9 @@ loadCookie();
 
 button.onclick = function () {addTodo(prompt('Enter new thing to do'))};
 
-function removeChild(elem) {
-  elem.display = 'none';
+function removeDiv(elem) {
   if (confirm('Do you really want to delete this element?')) {
-    lst.removeChild(elem);
+    elem.remove();
     createCookie();
   }
 }
@@ -24,13 +23,13 @@ function createCookie() {
 }
 
 function addTodo(todo) {
-  if (todo === null)
+  if (todo === null || todo == '')
     return false;
   var div = document.createElement('div');
   var id = parseInt(lst.firstChild.id);
   div.innerHTML = todo;
   div.onclick = function() {
-    removeChild(div);
+    removeDiv(div);
   };
   if (!isNaN(id)) {
     div.id = id + 1;
